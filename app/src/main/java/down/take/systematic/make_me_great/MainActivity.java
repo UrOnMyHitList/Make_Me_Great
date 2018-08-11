@@ -8,6 +8,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +35,19 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        ListView scheuled_alarms_listview = (ListView)findViewById(R.id.scheduled_alarms_listview);
+
+        String[] values = new String[] { "Value1", "Value2", "Value3", "Value4" };
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                R.layout.listview_divider, R.id.text_listview, values);
+
+
+        scheuled_alarms_listview.setAdapter(adapter);
+
+
+
+
         return true;
     }
 
@@ -44,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Toast.makeText(getApplicationContext(), "Replace with your toast", Toast.LENGTH_SHORT).show();
             return true;
         }
 
